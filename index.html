@@ -1,132 +1,179 @@
-    <!-- 倒计时页面 -->
-    <div id="countdownPage">
-      <div class="top-text">良 辰 将 至</div>
-      <div class="title">开 席 倒 计 时</div>
-      <div class="subtitle">一生一世 · 一心一意</div>
+  <!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>开席倒计时</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"PingFang SC","Microsoft YaHei",sans-serif;}
+body{
+  min-height:100vh;
+  background: linear-gradient(145deg,#ff7828,#ff4f20);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  padding:20px;
+}
+.header-top{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:24px;
+}
+.left-tag{font-size:18px;opacity:0.9;}
+.right-tag{font-size:18px;opacity:0.9;}
+.main-title{
+  font-size:48px;
+  font-weight:bold;
+  letter-spacing:6px;
+  margin-bottom:8px;
+  text-align:center;
+}
+.sub-title{
+  font-size:16px;
+  opacity:0.85;
+  margin-bottom:40px;
+  letter-spacing:2px;
+}
+.count-wrap{
+  display:flex;
+  gap:16px;
+  margin-bottom:36px;
+}
+.count-item{
+  width:100px;
+  height:110px;
+  background:rgba(255,255,255,0.18);
+  border-radius:12px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.count-num{
+  font-size:42px;
+  font-weight:bold;
+  line-height:1;
+}
+.count-unit{
+  font-size:15px;
+  margin-top:6px;
+  opacity:0.85;
+}
+.desc-text{
+  text-align:center;
+  font-size:17px;
+  line-height:1.6;
+  opacity:0.92;
+  margin-bottom:12px;
+}
+.time-text{
+  font-size:16px;
+  margin-bottom:40px;
+  opacity:0.88;
+}
+.bottom-row{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.bottom-name{
+  font-size:20px;
+  font-weight:500;
+}
+.footer-tip{
+  position:absolute;
+  bottom:24px;
+  font-size:13px;
+  opacity:0.7;
+  letter-spacing:1px;
+}
+</style>
+</head>
+<body>
+<div class="header-top">
+  <div class="left-tag">宾果<br>牡丹</div>
+  <div class="right-tag">牡丹</div>
+</div>
+<div class="main-title" id="mainTitle">开席倒计时</div>
+<div class="sub-title" id="subTitle">一生一世 一心一意</div>
 
-      <div class="time-row">
-        <div class="time-block">
-          <div class="dot left"></div>
-          <div class="dot right"></div>
-          <div class="time-num" id="day">00</div>
-          <div class="time-label">天</div>
-        </div>
-        <div class="time-block">
-          <div class="dot left"></div>
-          <div class="dot right"></div>
-          <div class="time-num" id="hour">00</div>
-          <div class="time-label">时</div>
-        </div>
-        <div class="time-block">
-          <div class="dot left"></div>
-          <div class="dot right"></div>
-          <div class="time-num" id="min">00</div>
-          <div class="time-label">分</div>
-        </div>
-        <div class="time-block">
-          <div class="dot left"></div>
-          <div class="dot right"></div>
-          <div class="time-num" id="sec">00</div>
-          <div class="time-label">秒</div>
-        </div>
-      </div>
-
-      <div class="desc-line1">所爱隔山海，山海皆可平</div>
-      <div class="desc-line2">良辰吉日 · 2027年1月1日 12:00</div>
-    </div>
-
-    <!-- 领证纪念页面 -->
-    <div id="memorialPage" class="memorial">
-      <div class="top-text">我 们 的 纪 念</div>
-      <div class="title">已 经 领 证</div>
-      <div class="subtitle">从 2026 年 12 月 24 日 开 始</div>
-
-      <div class="time-row">
-        <div class="time-block">
-          <div class="dot left"></div>
-          <div class="dot right"></div>
-          <div class="time-num" id="marriedDay">00</div>
-          <div class="time-label">天</div>
-        </div>
-        <div class="time-block">
-          <div class="dot left"></div>
-          <div class="dot right"></div>
-          <div class="time-num" id="marriedHour">00</div>
-          <div class="time-label">时</div>
-        </div>
-        <div class="time-block">
-          <div class="dot left"></div>
-          <div class="dot right"></div>
-          <div class="time-num" id="marriedMin">00</div>
-          <div class="time-label">分</div>
-        </div>
-        <div class="time-block">
-          <div class="dot left"></div>
-          <div class="dot right"></div>
-          <div class="time-num" id="marriedSec">00</div>
-          <div class="time-label">秒</div>
-        </div>
-      </div>
-
-      <div class="mem-text">
-        2026年12月24日，我们领证<br>
-        2027年1月1日，我们举行婚筵<br>
-        余生请多指教
-      </div>
-    </div>
-
+<div class="count-wrap">
+  <div class="count-item">
+    <div class="count-num" id="day">00</div>
+    <div class="count-unit">天</div>
   </div>
+  <div class="count-item">
+    <div class="count-num" id="hour">00</div>
+    <div class="count-unit">时</div>
+  </div>
+  <div class="count-item">
+    <div class="count-num" id="min">00</div>
+    <div class="count-unit">分</div>
+  </div>
+  <div class="count-item">
+    <div class="count-num" id="sec">00</div>
+    <div class="count-unit">秒</div>
+  </div>
+</div>
 
-  <div class="footer-text">WITH LOVE · FOREVER 囍</div>
+<div class="desc-text" id="descText">所爱隔山海，山海皆可平</div>
+<div class="time-text" id="timeText">良辰吉日 · 2027年1月1日 12:00</div>
+
+<div class="bottom-row">
+  <div class="bottom-name">🐱 三花</div>
+  <div class="bottom-name">🐱 狸白</div>
+</div>
+
+<div class="footer-tip">WITH LOVE · FOREVER</div>
 
 <script>
-  const weddingTime = new Date("2027-01-01 12:00:00").getTime();
-  const marryCertTime = new Date("2026-12-24 00:00:00").getTime();
+// 开席时间（倒计时截止时间）
+const weddingTime = new Date("2027-01-01 12:00:00").getTime();
+// 领证基准时间（先暂定：2026-12-24 11:30）
+const marryTime = new Date("2026-12-24 11:30:00").getTime();
 
-  function updatePage() {
-    const now = Date.now();
-    const diff = weddingTime - now;
+function update(){
+  const now = Date.now();
+  const diffWedding = weddingTime - now;
 
-    const countdownPage = document.getElementById("countdownPage");
-    const memorialPage  = document.getElementById("memorialPage");
+  let day, hour, min, sec;
+  if(diffWedding > 0){
+    // 还没到开席：正常倒计时
+    document.getElementById('mainTitle').innerText = "开席倒计时";
+    document.getElementById('subTitle').innerText = "一生一世 一心一意";
+    document.getElementById('descText').innerText = "所爱隔山海，山海皆可平";
+    document.getElementById('timeText').innerText = "良辰吉日 · 2027年1月1日 12:00";
 
-    if (diff > 0) {
-      // 婚礼前：显示婚礼倒计时
-      countdownPage.style.display = "block";
-      memorialPage.style.display  = "none";
+    day = Math.floor(diffWedding / (1000 * 60 * 60 * 24));
+    hour = Math.floor((diffWedding % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    min = Math.floor((diffWedding % (1000 * 60 * 60)) / (1000 * 60));
+    sec = Math.floor((diffWedding % (1000 * 60)) / 1000);
+  }else{
+    // 开席时间已过：计算领证过去了多久
+    document.getElementById('mainTitle').innerText = "其实";
+    document.getElementById('subTitle').innerText = "领证已经";
+    document.getElementById('descText').innerText = "";
+    document.getElementById('timeText').innerText = "";
 
-      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const s = Math.floor((diff % (1000 * 60)) / 1000);
-
-      document.getElementById("day").innerText = String(d).padStart(2, "0");
-      document.getElementById("hour").innerText = String(h).padStart(2, "0");
-      document.getElementById("min").innerText  = String(m).padStart(2, "0");
-      document.getElementById("sec").innerText = String(s).padStart(2, "0");
-
-    } else {
-      // 婚礼结束后：切换为已经领证 天 时 分 秒
-      countdownPage.style.display = "none";
-      memorialPage.style.display  = "flex";
-
-      const marriedMs = now - marryCertTime;
-
-      const d = Math.floor(marriedMs / (1000 * 60 * 60 * 24));
-      const h = Math.floor((marriedMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const m = Math.floor((marriedMs % (1000 * 60 * 60)) / (1000 * 60));
-      const s = Math.floor((marriedMs % (1000 * 60)) / 1000);
-
-      document.getElementById("marriedDay").innerText = String(d).padStart(2, "0");
-      document.getElementById("marriedHour").innerText = String(h).padStart(2, "0");
-      document.getElementById("marriedMin").innerText  = String(m).padStart(2, "0");
-      document.getElementById("marriedSec").innerText = String(s).padStart(2, "0");
-    }
+    const diffMarry = now - marryTime;
+    day = Math.floor(diffMarry / (1000 * 60 * 60 * 24));
+    hour = Math.floor((diffMarry % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    min = Math.floor((diffMarry % (1000 * 60 * 60)) / (1000 * 60));
+    sec = Math.floor((diffMarry % (1000 * 60)) / 1000);
   }
 
-  updatePage();
-  setInterval(updatePage, 1000);
+  document.getElementById('day').innerText = String(day).padStart(2,'0');
+  document.getElementById('hour').innerText = String(hour).padStart(2,'0');
+  document.getElementById('min').innerText = String(min).padStart(2,'0');
+  document.getElementById('sec').innerText = String(sec).padStart(2,'0');
+}
+update();
+setInterval(update,1000);
 </script>
-
 </body>
 </html>
