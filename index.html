@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>开席倒计时</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:"PingFang SC","Microsoft YaHei",sans-serif;}
+html,body{
+  width:100%;
+  min-height:100vh;
+  background: linear-gradient(145deg,#ff7828,#ff4f20);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  padding:20px;
+  text-align:center;
+}
+.header-top{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:24px;
+}
+.left-tag,.right-tag{font-size:18px;opacity:0.9;}
+.main-title{
+  font-size:48px;
+  font-weight:bold;
+  letter-spacing:6px;
+  margin-bottom:8px;
+}
+.sub-title{
+  font-size:16px;
+  opacity:0.85;
+  margin-bottom:40px;
+  letter-spacing:2px;
+}
+.count-wrap{
+  display:flex;
+  gap:16px;
+  margin-bottom:36px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.count-item{
+  width:100px;
+  height:110px;
+  background:rgba(255,255,255,0.18);
+  border-radius:12px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+.count-num{
+  font-size:42px;
+  font-weight:bold;
+  line-height:1;
+}
+.count-unit{
+  font-size:15px;
+  margin-top:6px;
+  opacity:0.85;
+}
+.desc-text{
+  font-size:17px;
+  line-height:1.6;
+  opacity:0.92;
+  margin-bottom:12px;
+}
+.time-text{
+  font-size:16px;
+  margin-bottom:40px;
+  opacity:0.88;
+}
+.bottom-row{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.bottom-name{
+  font-size:20px;
+  font-weight:500;
+}
+.footer-tip{
+  position:absolute;
+  bottom:24px;
+  font-size:13px;
+  opacity:0.7;
+  letter-spacing:1px;
+}
+</style>
+</head>
+<body>
+<div class="header-top">
+  <div class="left-tag">宾果<br>牡丹</div>
+  <div class="right-tag">牡丹</div>
+</div>
+<div class="main-title" id="mainTitle">开席倒计时</div>
+<div class="sub-title" id="subTitle">一生一世 一心一意</div>
+
+<div class="count-wrap">
+  <div class="count-item">
+    <div class="count-num" id="day">00</div>
+    <div class="count-unit">天</div>
+  </div>
+  <div class="count-item">
+    <div class="count-num" id="hour">00</div>
+    <div class="count-unit">时</div>
+  </div>
+  <div class="count-item">
+    <div class="count-num" id="min">00</div>
+    <div class="count-unit">分</div>
+  </div>
+  <div class="count-item">
+    <div class="count-num" id="sec">00</div>
+    <div class="count-unit">秒</div>
+  </div>
+</div>
+
+<div class="desc-text" id="descText">所爱隔山海，山海皆可平</div>
+<div class="time-text" id="timeText">良辰吉日 · 2027年1月1日 12:00</div>
+
+<div class="bottom-row">
+  <div class="bottom-name">🐱 三花</div>
+  <div class="bottom-name">🐱 狸白</div>
+</div>
+
+<div class="footer-tip">WITH LOVE · FOREVER</div>
+
+<script>
+// 开席时间
+const weddingTime = new Date("2027-01-01 12:00:00").getTime();
+// 领证基准时间（暂定）
+const marryTime = new Date("2026-12-24 11:30:00").getTime();
+
+function update(){
+  const now = Date.now();
+  const diffWedding = weddingTime - now;
+
+  let day, hour, min, sec;
+  if(diffWedding > 0){
+    document.getElementById('mainTitle').innerText = "开席倒计时";
+    document.getElementById('subTitle').innerText = "一生一世 一心一意";
+    document.getElementById('descText').innerText = "所爱隔山海，山海皆可平";
+    document.getElementById('timeText').innerText = "良辰吉日 · 2027年1月1日 12:00";
+
+    day = Math.floor(diffWedding / (1000 * 60 * 60 * 24));
+    hour = Math.floor((diffWedding % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    min = Math.floor((diffWedding % (1000 * 60 * 60)) / (1000 * 60));
+    sec = Math.floor((diffWedding % (1000 * 60)) / 1000);
+  }else{
+    document.getElementById('mainTitle').innerText = "其实";
+    document.getElementById('subTitle').innerText = "领证已经";
+    document.getElementById('descText').innerText = "";
+    document.getElementById('timeText').innerText = "";
+
+    const diffMarry = now - marryTime;
+    day = Math.floor(diffMarry / (1000 * 60 * 60 * 24));
+    hour = Math.floor((diffMarry % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    min = Math.floor((diffMarry % (1000 * 60 * 60)) / (1000 * 60));
+    sec = Math.floor((diffMarry % (1000 * 60)) / 1000);
+  }
+
+  document.getElementById('day').innerText = String(day).padStart(2,'0');
+  document.getElementById('hour').innerText = String(hour).padStart(2,'0');
+  document.getElementById('min').innerText = String(min).padStart(2,'0');
+  document.getElementById('sec').innerText = String(sec).padStart(2,'0');
+}
+update();
+setInterval(update,1000);
+</script>
+</body>
+</html>
