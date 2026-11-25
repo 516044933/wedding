@@ -11,7 +11,6 @@
   box-sizing:border-box;
   font-family:"PingFang SC","Microsoft YaHei","SimSun",serif;
 }
-
 body{
   min-height:100vh;
   background:
@@ -26,8 +25,6 @@ body{
   position:relative;
   overflow:hidden;
 }
-
-/* 暗纹底 */
 body::before{
   content:"";
   position:absolute;
@@ -39,201 +36,188 @@ body::before{
   pointer-events:none;
   opacity:.55;
 }
-
-/* 金色边框 */
 .frame{
   position:relative;
   width:100%;
-  max-width:1100px;
-  padding:40px 50px;
-  border:2px solid rgba(255,210,120,0.55);
-  border-radius:18px;
-  box-shadow:
-    0 0 0 10px rgba(255,255,255,0.04),
-    0 0 40px rgba(0,0,0,0.25),
-    inset 0 0 60px rgba(255,140,60,0.12);
-  background:
-    linear-gradient(145deg, rgba(255,150,70,0.18), rgba(200,70,20,0.18));
+  max-width:1180px;
+  min-height:80vh;
+  padding:50px 40px;
+  border:2px solid rgba(255,210,120,0.65);
+  border-radius:20px;
+  box-shadow:0 0 40px rgba(0,0,0,0.25);
+  background:linear-gradient(145deg, rgba(255,150,70,0.12), rgba(200,70,20,0.12));
 }
-
-/* 四角金线 */
-.frame::before,
-.frame::after{
-  content:"";
+/* 四角金边飘带 */
+.corner{
   position:absolute;
-  width:42px;
-  height:42px;
-  border-color:#ffd57a;
-  border-style:solid;
-  border-width:0;
+  width:160px;
+  height:160px;
+  background:url("https://p3-flow-image-sign.byteimg.com/tos-cn-i-a9rns2rl98/42121100839e44389201003414021110~tplv-a9rns2rl98-image.image") no-repeat center/contain;
+  opacity:0.85;
+  pointer-events:none;
 }
-.frame::before{
-  top:10px;left:10px;
-  border-top-width:2px;
-  border-left-width:2px;
-}
-.frame::after{
-  bottom:10px;right:10px;
-  border-bottom-width:2px;
-  border-right-width:2px;
-}
-
-/* 顶部双喜 */
+.corner-tl{top:-10px;left:-10px;transform:rotate(0deg);}
+.corner-tr{top:-10px;right:-10px;transform:scaleX(-1);}
+.corner-bl{bottom:-10px;left:-10px;transform:scaleY(-1);}
+.corner-br{bottom:-10px;right:-10px;transform:scale(-1,-1);}
+/* 顶部囍 + 良辰将至 */
 .top-double-happiness{
   text-align:center;
-  font-size:28px;
+  font-size:32px;
   color:#ffd57a;
-  letter-spacing:8px;
-  margin-bottom:8px;
-  text-shadow:0 2px 10px rgba(0,0,0,0.25);
+  letter-spacing:10px;
+  margin-bottom:10px;
+  text-shadow:0 2px 12px rgba(0,0,0,0.25);
 }
-
-/* 顶部小装饰线 */
 .top-sub{
   text-align:center;
-  font-size:13px;
-  letter-spacing:4px;
-  color:#ffe2a8;
-  opacity:.85;
-  margin-bottom:18px;
-}
-
-/* 主标题 */
-.main-title{
-  text-align:center;
-  font-size:54px;
-  font-weight:bold;
-  letter-spacing:10px;
-  color:#fff;
-  text-shadow:0 4px 18px rgba(0,0,0,0.35);
-  margin-bottom:10px;
-}
-
-/* 副标题 */
-.sub-title{
-  text-align:center;
-  font-size:15px;
+  font-size:18px;
   letter-spacing:6px;
   color:#ffe2a8;
-  margin-bottom:34px;
+  opacity:.9;
+  margin-bottom:16px;
+}
+.main-title{
+  text-align:center;
+  font-size:56px;
+  font-weight:bold;
+  letter-spacing:12px;
+  color:#fff;
+  text-shadow:0 4px 20px rgba(0,0,0,0.35);
+  margin-bottom:12px;
+}
+.sub-title{
+  text-align:center;
+  font-size:18px;
+  letter-spacing:6px;
+  color:#ffe2a8;
+  margin-bottom:40px;
   opacity:.9;
 }
-
-/* 倒计时卡片区 */
 .count-wrap{
   display:flex;
   justify-content:center;
-  gap:14px;
-  margin-bottom:30px;
+  gap:18px;
+  margin-bottom:36px;
 }
-
 .count-item{
-  width:110px;
-  height:130px;
+  width:120px;
+  height:140px;
   background:linear-gradient(180deg,#ffffff 0%,#f7f1e4 100%);
-  border-radius:14px;
+  border-radius:16px;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  box-shadow:
-    0 10px 24px rgba(0,0,0,0.18),
-    inset 0 0 0 1px rgba(255,255,255,0.6);
+  box-shadow:0 10px 26px rgba(0,0,0,0.2);
   position:relative;
 }
-
 .count-item::before{
   content:"";
   position:absolute;
-  inset:6px;
-  border:1px solid rgba(255,215,140,0.45);
-  border-radius:10px;
-  pointer-events:none;
+  inset:8px;
+  border:1px solid rgba(255,215,140,0.5);
+  border-radius:12px;
 }
-
 .count-num{
-  font-size:44px;
+  font-size:48px;
   font-weight:800;
   color:#b83412;
   line-height:1;
   font-family:"DIN","Arial",sans-serif;
   letter-spacing:2px;
 }
-
 .count-unit{
   margin-top:10px;
-  font-size:14px;
+  font-size:16px;
   color:#8a2b10;
   letter-spacing:4px;
 }
-
-/* 中间文案 */
 .mid-text{
   text-align:center;
-  font-size:16px;
+  font-size:20px;
   color:#fff;
-  letter-spacing:3px;
-  margin-bottom:8px;
+  letter-spacing:4px;
+  margin-bottom:10px;
   opacity:.95;
 }
-
 .mid-date{
   text-align:center;
-  font-size:14px;
+  font-size:18px;
   color:#ffe2a8;
   letter-spacing:2px;
-  margin-bottom:24px;
+  margin-bottom:40px;
   opacity:.85;
 }
-
-/* 底部英文 */
 .footer-text{
   text-align:center;
-  font-size:13px;
+  font-size:18px;
   letter-spacing:4px;
   color:#ffe2a8;
-  opacity:.8;
-}
-
-/* 两侧花和猫装饰，不干扰居中内容 */
-.deco-left,
-.deco-right{
-  position:absolute;
-  bottom:20px;
-  width:140px;
-  height:140px;
   opacity:.85;
+}
+.footer-xi{
+  text-align:center;
+  font-size:34px;
+  color:#ffd57a;
+  margin-top:8px;
+  letter-spacing:16px;
+}
+/* 左下角：柯基 + 牡丹花 */
+.deco-left{
+  position:absolute;
+  bottom:0px;
+  left:0px;
+  width:320px;
+  height:320px;
+  background:url("https://p3-flow-image-sign.byteimg.com/tos-cn-i-a9rns2rl98/22414301483c44388212201200844773~tplv-a9rns2rl98-image.image") no-repeat bottom left/contain;
   pointer-events:none;
 }
-.deco-left{
-  left:20px;
-  background:radial-gradient(circle at center, rgba(255,255,255,0.18) 0%, transparent 70%);
-  border-radius:50%;
-}
+/* 右下角：三只猫猫狗狗 */
 .deco-right{
-  right:20px;
-  background:radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, transparent 70%);
-  border-radius:50%;
+  position:absolute;
+  bottom:0px;
+  right:0px;
+  width:360px;
+  height:320px;
+  background:url("https://p3-flow-image-sign.byteimg.com/tos-cn-i-a9rns2rl98/14204040844a44089130020044041761~tplv-a9rns2rl98-image.image") no-repeat bottom right/contain;
+  pointer-events:none;
 }
-
-/* 响应式 */
-@media (max-width: 720px){
-  .main-title{ font-size:34px; letter-spacing:6px; }
-  .count-item{ width:82px; height:100px; }
-  .count-num{ font-size:32px; }
-  .count-unit{ font-size:12px; }
-  .frame{ padding:28px 20px; }
-  .deco-left,.deco-right{ width:90px; height:90px; }
+/* 星星点缀 */
+.star{
+  position:absolute;
+  width:12px;
+  height:12px;
+  background:#ffe8b0;
+  clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+  opacity:0.9;
+  pointer-events:none;
+}
+.s1{top:12%;left:22%;}
+.s2{top:20%;right:24%;}
+.s3{top:42%;left:26%;}
+.s4{top:42%;right:26%;}
+.s5{top:72%;left:32%;}
+.s6{top:72%;right:32%;}
+@media (max-width:768px){
+  .main-title{font-size:36px;letter-spacing:6px;}
+  .count-item{width:85px;height:100px;}
+  .count-num{font-size:34px;}
+  .deco-left{width:200px;height:200px;}
+  .deco-right{width:220px;height:200px;}
+  .frame{padding:30px 16px;}
 }
 </style>
 </head>
 <body>
-
 <div class="frame">
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
 
   <div class="top-double-happiness">囍</div>
   <div class="top-sub">良 辰 将 至</div>
-
   <div class="main-title" id="mainTitle">婚礼倒计时</div>
   <div class="sub-title">一 生 一 世 · 一 心 一 意</div>
 
@@ -260,9 +244,17 @@ body::before{
   <div class="mid-date" id="midDate">良辰吉日 · 2027年1月1日 12:00</div>
 
   <div class="footer-text">WITH LOVE · FOREVER</div>
+  <div class="footer-xi">囍</div>
 
   <div class="deco-left"></div>
   <div class="deco-right"></div>
+
+  <div class="star s1"></div>
+  <div class="star s2"></div>
+  <div class="star s3"></div>
+  <div class="star s4"></div>
+  <div class="star s5"></div>
+  <div class="star s6"></div>
 </div>
 
 <script>
@@ -272,7 +264,6 @@ const marryTime = new Date("2026-12-24 11:30:00").getTime();
 function update(){
   const now = Date.now();
   const diffWedding = weddingTime - now;
-
   let day, hour, min, sec;
 
   if(diffWedding > 0){
@@ -295,16 +286,13 @@ function update(){
     min = Math.floor((diffMarry % (1000 * 60 * 60)) / (1000 * 60));
     sec = Math.floor((diffMarry % (1000 * 60)) / 1000);
   }
-
   document.getElementById("day").innerText = String(day).padStart(2,"0");
   document.getElementById("hour").innerText = String(hour).padStart(2,"0");
   document.getElementById("min").innerText = String(min).padStart(2,"0");
   document.getElementById("sec").innerText = String(sec).padStart(2,"0");
 }
-
 update();
 setInterval(update, 1000);
 </script>
-
 </body>
 </html>
